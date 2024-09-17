@@ -1,0 +1,3 @@
+lang_trans
+git+https://github.com/hedhoud/num2words.git
+praat-textgrids

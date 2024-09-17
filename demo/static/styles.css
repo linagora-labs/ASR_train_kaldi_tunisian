@@ -1,0 +1,175 @@
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+
+body {
+  
+  margin: 0;
+  padding: 20px;
+  background-color: #000; /* Black background */
+  color: #fff; /* White text color */
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.logo {
+  height: 40px;
+}
+
+h1 {
+  font-family: 'Anonymous Pro', monospace; 
+  text-align: center;
+  margin: 0;
+  color: #cda5a5; /* Gray heading color */
+  vertical-align:auto;  /* Aligns the flag vertically with the text */
+}
+
+.flag-icon {
+  width: 40px;  /* Adjust the width as needed */
+  height: 27px;
+  vertical-align:text-top;  /* Aligns the flag vertically with the text */
+  padding-top: 2px;
+}
+
+
+#transcription-box {
+  font-family: 'Droid Arabic Kufi';
+  position: relative;
+  height: 600px;
+  width: 100%;
+  color: #fff; /* White text color */
+  position: relative;
+  margin: 10% auto 0;
+  background: linear-gradient(0deg, #000, #272727);
+  margin-bottom: 15px;
+  border-radius: 23px;
+  direction: rtl;
+  text-align: right;
+  padding: 15px;
+  line-height: 30px;
+  font-size: 20px;
+}
+
+#transcription-box::before, #transcription-box::after {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    border-radius: 25px;
+    background: linear-gradient(45deg,
+    #ff4545,
+    #e64949,
+    #9c4545,
+    #d85f5f,
+    #ff9393,
+    #f5a3a3,
+    #f3bbbb,
+    #f5bdbd,
+    #f52121,
+    #f5a1a1,
+    #ff4545,
+    #f7b2b2,
+    #f7e0e0);
+    background-size: 400%;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    z-index: -1;
+    animation: anim-moving-glow 20s linear infinite;
+}
+
+@keyframes anim-moving-glow {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+#transcription-box:after {
+    filter: blur(10px);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #000; /* Black text on buttons */
+  background-color: #beadad; /* White background on buttons */
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulse 2s infinite; /* Adding pulse animation */
+}
+
+button:hover {
+  transform: scale(1.1); /* Slightly enlarges button on hover */
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.7); /* Adds glowing effect */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.925);
+  }
+}
+#transcription-cursor {
+  display: inline-block;
+  width: 1px;
+  height: 24px;
+  background-color: #fff; /* White color for the cursor */
+  animation: blink 1s step-end infinite;
+  vertical-align: bottom;
+}
+
+@keyframes blink {
+  from, to {
+      visibility: hidden;
+  }
+  50% {
+      visibility: visible;
+  }
+}
+
+.partial {
+  color: #888;
+  font-style: italic;
+}
+
+#status {
+  font-size: 9pt;
+  margin-left: 10px;
+}
+
+.d-none {
+  display: none;
+}
