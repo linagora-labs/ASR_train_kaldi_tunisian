@@ -86,7 +86,7 @@ cd ASR_train_kaldi_tunisian
 ## How to Use
 
 1) **Prepare Your Data:**
-    - You can find our public datasets in HuggingFace: `[linagora/linto-dataset-audio-ar-tn-0.1](https://huggingface.co/datasets/linagora/linto-dataset-audio-ar-tn-0.1)` & `[linagora/linto-dataset-audio-ar-tn-augmented-0.1](https://huggingface.co/datasets/linagora/linto-dataset-audio-ar-tn-augmented-0.1)`
+    - You can find our public datasets in HuggingFace: [linagora/linto-dataset-audio-ar-tn-0.1](https://huggingface.co/datasets/linagora/linto-dataset-audio-ar-tn-0.1) & [linagora/linto-dataset-audio-ar-tn-augmented-0.1](https://huggingface.co/datasets/linagora/linto-dataset-audio-ar-tn-augmented-0.1)
     - Ensure your dataset in kaldi format (e.g: text, wav.scp, segments, utt2dur, spk2utt, utt2spk).
     
 
