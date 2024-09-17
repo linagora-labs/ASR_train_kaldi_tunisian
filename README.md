@@ -24,8 +24,7 @@ Before using this script, ensure you have a Kaldi environment set up. You have t
 
 ## Model
 
-You can find our public ASR model on Hugging Face:  
-[linagora/linto-asr-ar-tn-0.1](https://huggingface.co/linagora/linto-asr-ar-tn-0.1)
+You can find our public ASR model on Hugging Face: [linagora/linto-asr-ar-tn-0.1](https://huggingface.co/linagora/linto-asr-ar-tn-0.1)
 
 ## Language Model (LM)
 
