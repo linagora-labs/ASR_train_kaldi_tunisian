@@ -22,12 +22,18 @@ Before using this script, ensure you have a Kaldi environment set up. You have t
 
    This documentation will guide you through the installation process, including dependencies and configuration.
 
+## Model
+
+You can find our public ASR model on Hugging Face:  
+[linagora/linto-asr-ar-tn-0.1](https://huggingface.co/linagora/linto-asr-ar-tn-0.1)
+
 ## Language Model (LM)
 
 A Language Model (LM) is a statistical model or neural network that predicts the likelihood of a sequence of words or tokens. It helps in understanding the structure and meaning of text by learning patterns and relationships within the language. In our case, we chose to work with statistical N-Gram Models, as Kaldi requires them for its operations.
 
 **Statistical N-Gram Models:**  
 These models predict the probability of a word based on the previous \(N-1\) words. For example, a bigram model considers the previous word, while a trigram model considers the previous two words. These models are simple but can be limited by their fixed context window.
+
 
 ## Acoustic Model (AM)
 
