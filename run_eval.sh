@@ -12,7 +12,7 @@ model_path=$2          # Path to the model directory (should contain: [am / grap
 nj=4
 
 # Check if the required directories and files exist
-if [ ! -d "$model_path/am" ] || [ ! -d "$model_path/graph" ] || [ ! -d "$model_path/ivector" ] || [ ! -d "$model_path/am/conf" ]; then
+if [ ! -d "$model_path/am" ] || [ ! -d "$model_path/graph" ] || [ ! -d "$model_path/ivector" ] || [ ! -d "$model_path/conf" ]; then
     echo "Model path or required directories do not exist: $model_path"
     exit 1
 fi
@@ -35,7 +35,7 @@ njobs=$(( num_spk >= nj ? nj : num_spk ))
 
 # Compute MFCC features
 if [ ! -f "$data/feats.scp" ]; then
-    steps/make_mfcc.sh --nj $njobs --mfcc-config "$model_path/am/conf/mfcc.conf" "$data" "$data/{log,mfcc}"
+    steps/make_mfcc.sh --nj $njobs --mfcc-config "$model_path/conf/mfcc.conf" "$data" "$data/{log,mfcc}"
     utils/fix_data_dir.sh "$data"
 fi
 
