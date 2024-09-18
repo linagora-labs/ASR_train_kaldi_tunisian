@@ -10,11 +10,11 @@
 
 # Set up paths (replace 'sys' with the actual repository path)
 sys= # Path to the repository
-data_dir="$sys/kaldi-scripts/data"
+data_dir="$sys/ASR_train_kaldi_tunisian/data"
 lang_dir="$data_dir/lang"
 dict_dir="$data_dir/dict"
 db="$data_dir/db"
-local_dir="$sys/kaldi-scripts/local"
+local_dir="$sys/ASR_train_kaldi_tunisian/local"
 
 # Define variables with default values
 input_text_file=

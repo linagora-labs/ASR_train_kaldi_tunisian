@@ -48,7 +48,7 @@ extract_features_for_data() {
 }
 
 # copy the train dataset into data folder
-cp -r $kaldi_data_path $sys/kaldi-scripts/data/data_train
+cp -r $kaldi_data_path $sys/ASR_train_kaldi_tunisian/data/data_train
 
 # Feature extraction for training data
 extract_features_for_data $data_train
