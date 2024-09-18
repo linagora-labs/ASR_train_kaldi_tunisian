@@ -56,13 +56,17 @@ extract_features_for_data $data_train
 # Optional: Feature extraction for test data
 # extract_features_for_data $data_test
 
-# Subset training data for initial monophone training
-utils/subset_data_dir.sh --first $data_train 5000 ${data_train}_5K || exit 1
+# Count the number of rows in the dataset
+num_rows=$(wc -l < $data_train/text)
+# Calculate half of the rows
+half_rows=$((num_rows / 2))
+# Use the subset_data_dir.sh with half the dataset
+utils/subset_data_dir.sh --first $data_train $half_rows ${data_train}_half || exit 1
 
 # Stage 1: Monophone training and decoding
 if [ $stage -le 1 ]; then
     if $train; then
-        steps/train_mono.sh --boost-silence 1.25 --nj $nj --cmd "$train_cmd" ${data_train}_5K $lang $exp/mono || exit 1
+        steps/train_mono.sh --boost-silence 1.25 --nj $nj --cmd "$train_cmd" ${data_train}_half $lang $exp/mono || exit 1
     fi
 
     if $decode; then
