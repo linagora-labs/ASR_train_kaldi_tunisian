@@ -25,8 +25,8 @@ fi
 ####################################################################################
 
 # Set default A.M parameters if not set
-[ ! -f "$model_path/am/frame_subsampling_factor" ] && echo "3" > "$model_path/am/frame_subsampling_factor"
-[ ! -f "$model_path/am/cmvn_opts" ] && echo "--norm-means=false --norm-vars=false" > "$model_path/am/cmvn_opts"
+[ ! -f $model_path/am/frame_subsampling_factor ] && echo "3" > $model_path/am/frame_subsampling_factor
+[ ! -f $model_path/am/cmvn_opts ] && echo "--norm-means=false --norm-vars=false" > $model_path/am/cmvn_opts
 
 # Step 2: Feature extraction
 # Determine number of jobs
@@ -35,22 +35,22 @@ njobs=$(( num_spk >= nj ? nj : num_spk ))
 
 # Compute MFCC features
 if [ ! -f "$data/feats.scp" ]; then
-    steps/make_mfcc.sh --nj $njobs --mfcc-config "$model_path/conf/mfcc.conf" "$data" "$data/{log,mfcc}"
+    steps/make_mfcc.sh --nj $njobs --mfcc-config $model_path/conf/mfcc.conf $data $data/{log,mfcc}
     utils/fix_data_dir.sh "$data"
 fi
 
 # Compute CMVN stats
-if [ ! -f "$data/cmvn.scp" ]; then
-    steps/compute_cmvn_stats.sh "$data" "$data/{log,mfcc}"
+if [ ! -f $data/cmvn.scp ]; then
+    steps/compute_cmvn_stats.sh $data $data/{log,mfcc}
 fi
 
 # Compute iVectors
-if [ ! -f "$data/ivectors/ivector_online.scp" ]; then
-    steps/online/nnet2/extract_ivectors_online.sh --nj $njobs "$data" "$model_path/ivector" "$data/ivectors"
+if [ ! -f $data/ivectors/ivector_online.scp ]; then
+    steps/online/nnet2/extract_ivectors_online.sh --nj $njobs $data $model_path/ivector $data/ivectors
 fi
 
 # Decode the data
-data_name=$(basename "$data")
+data_name=$(basename $data)
 
 if [ ! -f "$model_path/am/$data_name/.done" ]; then
     steps/nnet3/decode.sh \
@@ -61,8 +61,8 @@ if [ ! -f "$model_path/am/$data_name/.done" ]; then
         --extra-right-context-final 0 \
         --frames-per-chunk 150 \
         --nj $nj --num-threads 2 --use-gpu true \
-        --online-ivector-dir "$d/ivectors" \
-        "$model_path/graph" "$d" "$model_path/am/$data_name"
+        --online-ivector-dir "$data/ivectors" \
+        "$model_path/graph" "$data" "$model_path/am/$data_name"
     
     # Mark as done
     touch "$model_path/am/$data_name/.done"
