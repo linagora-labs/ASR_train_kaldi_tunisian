@@ -18,11 +18,11 @@ if [ ! -d "$model_path/am" ] || [ ! -d "$model_path/graph" ] || [ ! -d "$model_p
 fi
 
 # Step 1: Data preparation and validation
-####################################################################################
-# 1. Prepare data                                                                  #
-# 2. Combine data                                                                  #
-# 3. Fix and validate with utils/validate_data_dir.sh and utils/fix_data_dir.sh   #
-####################################################################################
+############################################################################################################
+# 1. Prepare data `check local/huggingFace_into_kaldi.py` or prepare your own dataset                         #
+# 2. Combine data `Non need if you used local/huggingFace_into_kaldi.py` else use `utils/combine_data.sh`     #
+# 3. Fix and validate with utils/validate_data_dir.sh and utils/fix_data_dir.sh                            #
+############################################################################################################
 
 # Set default A.M parameters if not set
 [ ! -f $model_path/am/frame_subsampling_factor ] && echo "3" > $model_path/am/frame_subsampling_factor

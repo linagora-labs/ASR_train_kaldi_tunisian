@@ -92,8 +92,19 @@ cd ASR_train_kaldi_tunisian
 
 1) **Prepare Your Data:**
     - You can find our public datasets in HuggingFace: [linagora/linto-dataset-audio-ar-tn-0.1](https://huggingface.co/datasets/linagora/linto-dataset-audio-ar-tn-0.1) & [linagora/linto-dataset-audio-ar-tn-augmented-0.1](https://huggingface.co/datasets/linagora/linto-dataset-audio-ar-tn-augmented-0.1)
-    - Ensure your dataset in kaldi format (e.g: text, wav.scp, segments, utt2dur, spk2utt, utt2spk).
-    
+    - You can just follow this code to download all the data:
+    ```bash 
+    cd ASR_train_kaldi_tunisian
+
+    python3 local/huggingFace_into_kaldi.py --dataset linagora/linto-dataset-audio-ar-tn-0.1 --kaldi <PATH/TO/SAVE/KALDI/DATA> --wavs_path <PATH/TO/SAVE/AUDIOS>
+
+    python3 local/huggingFace_into_kaldi.py --dataset linagora/linto-dataset-audio-ar-tn-augmented-0.1 --kaldi <PATH/TO/SAVE/KALDI/DATA> --wavs_path <PATH/TO/SAVE/AUDIOS>    
+    ```
+    - You can use utils/combine_data.sh to combine all datasets at once.
+
+    - If you want to use your own dataset, ensure it's in Kaldi format (e.g., text, wav.scp, segments, utt2dur, spk2utt, utt2spk). For more info, check this [link](https://kaldi-asr.org/doc/data_prep.html#data_prep_data_yourself).
+
+  
 
 2) **Build the Language Model:**
     - **To build a Language model from scratch you have to use the `train_lm.sh` script:**
